@@ -63,12 +63,26 @@ const langList = [
     'en'
 ];
 
-let lang1 = lang2 = '';
+let lang1 = '';
+let lang2 = '';
 
 // this will be replaced by dynamic input
 let inputFile = fs.readFileSync("testFile1.txt", "utf8");
-
 let translateAPI = `https://translate.google.com/?sl=${lang1}&tl=${lang2}&text=${inputFile}&op=translate`;
+
+function makeTheCalls (langList, translateAPI, inputFile) {
+    const len = langList.length - 2;
+    for(let i = 0; i < len; i++){
+        let lang1 = langList[i];
+        let lang2 = langList[i+1];
+        console.log(`https://translate.google.com/?sl=${lang1}&tl=${lang2}&text=${inputFile}&op=translate`);
+        // make a get request with proper parameters, replacing spaces for %20
+        // capture response
+        // set inputFile to new value
+    }
+    //return final value of inputFile
+}
+
 
 console.log(inputFile);
 console.log(Date.now());
