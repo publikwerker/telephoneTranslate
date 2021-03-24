@@ -70,12 +70,18 @@ let lang2 = '';
 let inputFile = fs.readFileSync("testFile1.txt", "utf8");
 let translateAPI = `https://translate.google.com/?sl=${lang1}&tl=${lang2}&text=${inputFile}&op=translate`;
 
+function removeSpaces (inFile) {
+    return inFile.split(' ').join("%20");
+}
+
 function makeTheCalls (langList, translateAPI, inputFile) {
-    const len = langList.length - 2;
+    const len = langList.length - 1;
+
+    let inFile = removeSpaces(inputFile);
     for(let i = 0; i < len; i++){
         let lang1 = langList[i];
         let lang2 = langList[i+1];
-        console.log(`https://translate.google.com/?sl=${lang1}&tl=${lang2}&text=${inputFile}&op=translate`);
+        console.log(`https://translate.google.com/?sl=${lang1}&tl=${lang2}&text=${inFile}&op=translate`);
         // make a get request with proper parameters, replacing spaces for %20
         // capture response
         // set inputFile to new value
@@ -83,7 +89,7 @@ function makeTheCalls (langList, translateAPI, inputFile) {
     //return final value of inputFile
 }
 
-
+makeTheCalls(langList, translateAPI, inputFile);
 console.log(inputFile);
 let appDate = Date.now();
 fs.writeFile(`./outputs/mynewfile${appDate}.txt`, inputFile, function (err) {
