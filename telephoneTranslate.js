@@ -85,8 +85,8 @@ function makeTheCalls (langList, translateAPI, inputFile) {
 
 
 console.log(inputFile);
-console.log(Date.now());
-fs.writeFile('mynewfile3.txt', inputFile, function (err) {
+let appDate = Date.now();
+fs.writeFile(`./outputs/mynewfile${appDate}.txt`, inputFile, function (err) {
     if (err) throw err;
     console.log('Replaced!');
   });
