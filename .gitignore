@@ -1,1 +1,4 @@
-./outputs
+outputs
+node_modules
+package-lock.json
+.env

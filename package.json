@@ -1,0 +1,26 @@
+{
+  "name": "telephonetranslate",
+  "version": "1.0.0",
+  "description": "a telephone game using the google translate url",
+  "main": "telephoneTranslate.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/publikwerker/telephoneTranslate.git"
+  },
+  "keywords": [
+    "telephone",
+    "translate"
+  ],
+  "author": "Publikwerker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/publikwerker/telephoneTranslate/issues"
+  },
+  "homepage": "https://github.com/publikwerker/telephoneTranslate#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
