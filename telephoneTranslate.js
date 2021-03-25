@@ -63,9 +63,6 @@ const langList = [
     'en'
 ];
 
-let lang1 = '';
-let lang2 = '';
-
 // this will be replaced by dynamic input
 let inputFile = fs.readFileSync("testFile1.txt", "utf8");
 let translateAPI = `https://translate.google.com/?sl=${lang1}&tl=${lang2}&text=${inputFile}&op=translate`;
