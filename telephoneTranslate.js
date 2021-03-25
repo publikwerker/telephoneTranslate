@@ -1,6 +1,9 @@
 'use strict';
+
+const axios = require('axios').default;
 const fs = require('fs');
 const http = require('http');
+const Translation = require('./Translation');
 
 // starts and ends on English by default
 const langList = [
@@ -65,28 +68,32 @@ const langList = [
 
 // this will be replaced by dynamic input
 let inputFile = fs.readFileSync("testFile1.txt", "utf8");
-let translateAPI = `https://translate.google.com/?sl=${lang1}&tl=${lang2}&text=${inputFile}&op=translate`;
 
 function removeSpaces (inFile) {
     return inFile.split(' ').join("%20");
 }
 
-function makeTheCalls (langList, translateAPI, inputFile) {
+function makeTheCalls (langList, inputFile) {
     const len = langList.length - 1;
 
     let inFile = removeSpaces(inputFile);
-    for(let i = 0; i < len; i++){
-        let lang1 = langList[i];
-        let lang2 = langList[i+1];
-        console.log(`https://translate.google.com/?sl=${lang1}&tl=${lang2}&text=${inFile}&op=translate`);
-        // make a get request with proper parameters, replacing spaces for %20
+ //   for(let i = 0; i < len; i++){
+
+        let lang1 = langList[0];
+        let lang2 = langList[1];
+  
+        let iteration = new Translation(lang1, lang2, inputFile);
+        let answer = iteration.getTranslation();
+        console.log(answer);
+
         // capture response
+        
         // set inputFile to new value
-    }
-    //return final value of inputFile
+ //   }
+        //return final value of inputFile
 }
 
-makeTheCalls(langList, translateAPI, inputFile);
+makeTheCalls(langList, inputFile);
 console.log(inputFile);
 let appDate = Date.now();
 fs.writeFile(`./outputs/mynewfile${appDate}.txt`, inputFile, function (err) {
