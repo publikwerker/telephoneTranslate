@@ -1,9 +1,9 @@
 'use strict';
 
+require('dotenv').config();
 const axios = require('axios').default;
 const fs = require('fs');
-const http = require('http');
-const Translation = require('./Translation');
+const API_KEY = process.env.API_KEY;
 
 // starts and ends on English by default
 const langList = [
@@ -67,36 +67,26 @@ const langList = [
 ];
 
 // this will be replaced by dynamic input
-let inputFile = fs.readFileSync("testFile1.txt", "utf8");
+let inputFile = fs.readFileSync("testFile1.txt", "utf8").trim();
 
+// changes spaces to %20
 function removeSpaces (inFile) {
     return inFile.split(' ').join("%20");
 }
 
-function makeTheCalls (langList, inputFile) {
-    const len = langList.length - 1;
+let lang1 = langList[0];
+let lang2 = langList[1];
 
-    let inFile = removeSpaces(inputFile);
- //   for(let i = 0; i < len; i++){
+let qText = removeSpaces(inputFile);
 
-        let lang1 = langList[0];
-        let lang2 = langList[1];
-  
-        let iteration = new Translation(lang1, lang2, inputFile);
-        let answer = iteration.getTranslation();
-        console.log(answer);
-
-        // capture response
-        
-        // set inputFile to new value
- //   }
-        //return final value of inputFile
-}
-
-makeTheCalls(langList, inputFile);
-console.log(inputFile);
-let appDate = Date.now();
-fs.writeFile(`./outputs/mynewfile${appDate}.txt`, inputFile, function (err) {
-    if (err) throw err;
-    console.log('Replaced!');
-  });
+// Send a POST request
+axios.post(`https://translate.googleapis.com/language/translate/v2?key=${API_KEY}&q=${qText}&target=${lang2}&source=${lang1}&format=text`)
+.then(res => {
+    if(res) {
+        const text = res.data.data.translations[0].translatedText;
+        console.log("this is the text:   ",text)
+    } else {
+        console.log("no response");
+    }
+})
+.catch(err => console.log(err));
