@@ -74,19 +74,27 @@ function removeSpaces (inFile) {
     return inFile.split(' ').join("%20");
 }
 
+// handles individual calls
+// returns the translated text
+function runTheMill(source, target, text) {
+
+    // Send a POST request
+    axios.post(`https://translate.googleapis.com/language/translate/v2?key=${API_KEY}&q=${qText}&target=${lang2}&source=${lang1}&format=text`)
+    .then(res => {
+        if(res) {
+            const text = res.data.data.translations[0].translatedText;
+            console.log("this is the text:   ",text)
+            return text;
+        } else {
+            console.log("no response");
+        }
+    })
+    .catch(err => console.log(err));
+}
+
 let lang1 = langList[0];
 let lang2 = langList[1];
 
 let qText = removeSpaces(inputFile);
 
-// Send a POST request
-axios.post(`https://translate.googleapis.com/language/translate/v2?key=${API_KEY}&q=${qText}&target=${lang2}&source=${lang1}&format=text`)
-.then(res => {
-    if(res) {
-        const text = res.data.data.translations[0].translatedText;
-        console.log("this is the text:   ",text)
-    } else {
-        console.log("no response");
-    }
-})
-.catch(err => console.log(err));
+runTheMill(lang1, lang2, qText);
