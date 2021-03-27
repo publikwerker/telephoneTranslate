@@ -4,6 +4,7 @@ require('dotenv').config();
 const axios = require('axios').default;
 const fs = require('fs');
 const API_KEY = process.env.API_KEY;
+const textSource = 'testFile6.txt';
 
 // starts and ends on English by default
 const langList = [
@@ -67,7 +68,12 @@ const langList = [
 ];
 
 // this will be replaced by dynamic input
-let inputFile = fs.readFileSync("testFile1.txt", "utf8").trim();
+let inputFile = fs.readFileSync(textSource, "utf8").trim();
+let data = `Source: en ${inputFile}`;
+
+fs.writeFile('./outputs/testTrans6.txt', data, (err) => {
+    if (err) throw err;
+})
 
 // changes spaces to %20
 function removeSpaces (inFile) {
@@ -86,6 +92,10 @@ function runTheMill(source, target, text) {
         if(res) {
             const text = res.data.data.translations[0].translatedText;
             console.log("this is the text:   ",res.data.data.translations);
+            let lineItem = `\nLanguage: ${target}, Text: ${text}`;
+            fs.appendFile('./outputs/testTrans6.txt', lineItem, (err) => {
+                if (err) throw err;
+            });
             return text;
         }
     })
