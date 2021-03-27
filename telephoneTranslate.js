@@ -54,11 +54,11 @@ const langList = [
     'ar',
     'eu',
     'bn',
-    'en-GB',
+ //   'en-GB',
     'pt-BR',
     'bg',
     'ca',
-    'chr',
+ //   'chr',
     'hr',
     'cs',
     'da',
@@ -78,23 +78,45 @@ function removeSpaces (inFile) {
 // returns the translated text
 function runTheMill(source, target, text) {
 
+    const uri = `https://translate.googleapis.com/language/translate/v2?key=${API_KEY}&q=${text}&target=${target}&source=${source}&format=text`;
+
     // Send a POST request
-    axios.post(`https://translate.googleapis.com/language/translate/v2?key=${API_KEY}&q=${qText}&target=${lang2}&source=${lang1}&format=text`)
+    return axios.post(uri)
     .then(res => {
         if(res) {
             const text = res.data.data.translations[0].translatedText;
-            console.log("this is the text:   ",text)
+            console.log("this is the text:   ",res.data.data.translations);
             return text;
-        } else {
-            console.log("no response");
         }
     })
     .catch(err => console.log(err));
 }
 
-let lang1 = langList[0];
-let lang2 = langList[1];
 
-let qText = removeSpaces(inputFile);
+async function millWrapper ( langList, inputFile ) {
 
-runTheMill(lang1, lang2, qText);
+    const len = langList.length - 1;
+    let outputFile = inputFile;
+    let i = 0;
+
+    while(i < len) {
+        let lang1 = langList[i];
+        let lang2 = langList[i+1];
+        let qText = removeSpaces(outputFile);
+      console.log(lang2, ' ');
+        try {
+            outputFile = await runTheMill(lang1, lang2, qText)
+            .then(res => outputFile = encodeURI(res));
+        } catch (err) {
+            console.log(err);
+        }
+
+        ++i;
+    }
+
+    console.log("This is final result:   ", decodeURI(outputFile));
+    return decodeURI(outputFile);
+}
+
+
+millWrapper(langList, inputFile);
