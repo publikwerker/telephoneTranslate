@@ -4,7 +4,8 @@ require('dotenv').config();
 const axios = require('axios').default;
 const fs = require('fs');
 const API_KEY = process.env.API_KEY;
-const textSource = 'testFile6.txt';
+const textSource = 'testFile4.txt';
+const textDestination = 'textTrans4.txt';
 
 // starts and ends on English by default
 const langList = [
@@ -71,7 +72,7 @@ const langList = [
 let inputFile = fs.readFileSync(textSource, "utf8").trim();
 let data = `Source: en ${inputFile}`;
 
-fs.writeFile('./outputs/testTrans6.txt', data, (err) => {
+fs.writeFile(`./outputs/${textDestination}`, data, (err) => {
     if (err) throw err;
 })
 
@@ -93,7 +94,7 @@ function runTheMill(source, target, text) {
             const text = res.data.data.translations[0].translatedText;
             console.log("this is the text:   ",res.data.data.translations);
             let lineItem = `\nLanguage: ${target}, Text: ${text}`;
-            fs.appendFile('./outputs/testTrans6.txt', lineItem, (err) => {
+            fs.appendFile(`./outputs/${textDestination}`, lineItem, (err) => {
                 if (err) throw err;
             });
             return text;
@@ -102,7 +103,7 @@ function runTheMill(source, target, text) {
     .catch(err => console.log(err));
 }
 
-
+// this powers the runTheMill function
 async function millWrapper ( langList, inputFile ) {
 
     const len = langList.length - 1;
@@ -116,7 +117,10 @@ async function millWrapper ( langList, inputFile ) {
       console.log(lang2, ' ');
         try {
             outputFile = await runTheMill(lang1, lang2, qText)
-            .then(res => outputFile = encodeURI(res));
+            .then(res => outputFile = encodeURI(res))
+            .then(res => {
+                return res;
+            });
         } catch (err) {
             console.log(err);
         }
