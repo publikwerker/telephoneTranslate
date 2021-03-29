@@ -3,171 +3,227 @@
 // takes language code, returns full name
 function longLangName (code) {
     switch (code) {
-        case 'en':
-            return "English";
-            break;
-        case 'et':
-            return "Estonian";
-            break;
-        case 'fil':
-            return "Tagalog";
-            break;
-        case 'fi':
-            return "Finnish";
-            break;
-        case 'fr':
-            return "French";
-            break;
-        case 'de':
-            return "German";
-            break;
-        case 'el':
-            return "Greek";
-            break;
-        case 'gu':
-            return "Gujurati";
-            break;
-        case 'iw':
-            return "Hebrew";
-            break;
-        case 'hi':
-            return "Hindi";
-            break;
-        case 'hu':
-            return "Hungarian";
-            break;
-        case 'is':
-            return "Icelandic";
-            break;
-        case 'id':
-            return "Indonesian";
-            break;
-        case 'it':
-            return "Italian";
-            break;
-        case 'ja':
-            return "Japanese";
-            break;
-        case 'kn':
-            return "Kannada";
-            break;
-        case 'ko':
-            return "Korean";
-            break;
-        case 'lv':
-            return "Latvian";
-            break;
-        case 'lt':
-            return "Lithuanian";
-            break;
-        case 'ms':
-            return "Malay";
-            break;
-        case 'ml':
-            return "Malayalam";
-            break;
-        case 'mr':
-            return "Marathi";
-            break;
-        case 'no':
-            return "Norwegian";
-            break;
-        case 'pl':
-            return "Polish";
-            break;
-        case 'pt-PT':
-            return "Portuguese";
-            break;
-        case 'ro':
-            return "Romanian";
-            break;
-        case 'ru':
-            return "Russian";
-            break;
-        case 'sr':
-            return "Serbian";
-            break;
-        case 'zh-CN':
-            return "Simplified Chinese";
-            break;
-        case 'sk':
-            return "Slovak";
-            break;
-        case 'sl':
-            return "Slovenian";
-            break;
-        case 'es':
-            return "Spanish";
-            break;
-        case 'sw':
-            return "Swahili";
-            break;
-        case 'sv':
-            return "Swedish";
-            break;
-        case 'ta':
-            return "Tamil";
-            break;
-        case 'te':
-            return "Telugu";
-            break;
-        case 'th':
-            return "Thai";
-            break;
-        case 'zh-TW':
-            return "Taiwanese";
-            break;
-        case 'tr':
-            return "Turkish";
-            break;
-        case 'ur':
-            return "Urdu";
-            break;
-        case 'uk':
-            return "Ukrainian";
-            break;
-        case 'vi':
-            return "Vietnamese";
-            break;
-        case 'cy':
-            return "Welsh";
-            break;
+        case 'af':
+            return "Afrikaans";
+        case 'sq':
+            return "Albanian";
         case 'am':
             return "Amharic";
-            break;
         case 'ar':
             return "Arabic";
-            break;
+        case 'hy':
+            return "Armenian";
+        case 'az':
+            return "Azerbaijani";
         case 'eu':
             return "Basque";
-            break;
+        case 'be':
+            return "Belorusian";
         case 'bn':
             return "Bengali";
-            break;
+        case 'bs':
+            return "Bosnian";
         case 'pt-BR':
             return "Brazilian Portuguese";
-            break;
         case 'bg':
             return "Bulgarian";
-            break;
         case 'ca':
             return "Catalan";
-            break;
+        case 'ceb':
+            return "Cebuano";
+        case 'zh':
+        case 'zh-CN':
+        case 'zh-TW':
+            return "Chinese";
+        case 'co':
+            return "Corsican";
         case 'hr':
             return "Croatian";
-            break;
         case 'cs':
             return "Czech";
-            break;
         case 'da':
             return "Danish";
-            break;
         case 'nl':
             return "Dutch";
-            break;
+        case 'en':
+            return "English";
+        case 'eo':
+            return "Esperanto";
+        case 'et':
+            return "Estonian";
+        case 'fi':
+            return "Finnish";
+        case 'fr':
+            return "French";
+        case 'fy':
+            return "Frisian";
+        case 'gl':
+            return "Galician";
+        case 'ka':
+            return "Georgian";
+        case 'de':
+            return "German";
+        case 'el':
+            return "Greek";
+        case 'gu':
+            return "Gujurati";
+        case 'ht':
+            return "Haitian Creole";
+        case 'ha':
+            return "Hausa";
+        case 'haw': 
+            return "Hawaiian";
+        case 'he':
+        case 'iw':
+            return "Hebrew";
+        case 'hi':
+            return "Hindi";
+        case 'hmn':
+            return "Hmong";
+        case 'hu':
+            return "Hungarian";
+        case 'is':
+            return "Icelandic";
+        case 'ig':
+            return "Igbo";
+        case 'id':
+            return "Indonesian";
+        case 'ga':
+            return "Irish";
+        case 'it':
+            return "Italian";
+        case 'ja':
+            return "Japanese";
+        case 'jv':
+            return "Javanese";
+        case 'kn':
+            return "Kannada";
+        case 'kk':
+            return "Kazakh";
+        case 'km':
+            return "Khmer";
+        case 'rw':
+            return "Kinyarwanda";
+        case 'ko':
+            return "Korean";
+        case 'ku':
+            return "Kurdish";
+        case 'ky':
+            return "Kyrgyz";
+        case 'lo':
+            return "Lao";
+        case 'la':
+            return "Latin";
+        case 'lv':
+            return "Latvian";
+        case 'lt':
+            return "Lithuanian";
+        case 'lb':
+            return "Luxembourgish";
+        case 'mk':
+            return "Macedonian";
+        case 'mg':
+            return "Malagasy";
+        case 'ms':
+            return "Malay";
+        case 'ml':
+            return "Malayalam";
+        case 'mt':
+            return "Maltese";
+        case 'mi':
+            return "Maori";
+        case 'mr':
+            return "Marathi";
+        case 'mn':
+            return "Mongolian";
+        case 'no':
+            return "Norwegian";
+        case 'ny':
+            return "Nyanja";
+        case 'or':
+            return "Odia";
+        case 'ps':
+            return "Pahto";
+        case 'fa':
+            return "Persian";
+        case 'pl':
+            return "Polish";
+        case 'pt-PT':
+        case 'pt':
+        case 'pt-BR':
+            return "Portuguese";
+        case 'pa':
+            return "Punjabi";
+        case 'ro':
+            return "Romanian";
+        case 'ru':
+            return "Russian";
+        case 'sm':
+            return "Samoan";
+        case 'gd':
+            return "Scots Gaelic";
+        case 'sr':
+            return "Serbian";
+        case 'st':
+            return "Sesotho";
+        case 'sn':
+            return "Shona";
+        case 'sd':
+            return "Sindhi";
+        case 'si':
+            return "Sinhala";
+        case 'sk':
+            return "Slovak";
+        case 'sl':
+            return "Slovenian";
+        case 'so':
+            return "Somali";
+        case 'es':
+            return "Spanish";
+        case 'su':
+            return "Sundanese";
+        case 'sw':
+            return "Swahili";
+        case 'sv':
+            return "Swedish";
+        case 'tl':
+            return "Tagalog";
+        case 'tg':
+            return "Tajik";
+        case 'ta':
+            return "Tamil";
+        case 'tt':
+            return "Tatar";
+        case 'te':
+            return "Telugu";
+        case 'th':
+            return "Thai";
+        case 'tr':
+            return "Turkish";
+        case 'tk':
+            return "Turkmen";
+        case 'uk':
+            return "Ukrainian";
+        case 'ur':
+            return "Urdu";
+        case 'ug':
+            return "Uyghur";
+        case 'uz':
+            return "Uzbek";
+        case 'vi':
+            return "Vietnamese";
+        case 'cy':
+            return "Welsh";
+        case 'xh':
+            return "Xhosa";
+        case 'yi':
+            return "Yiddish";
+        case 'yo':
+            return "Yoruba";
+        case 'zu':
+            return "Zulu";
         default :
             return "";
-            break;
     };
 };
 
