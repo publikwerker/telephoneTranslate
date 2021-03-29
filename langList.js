@@ -33,8 +33,9 @@ function longLangName (code) {
             return "Cebuano";
         case 'zh':
         case 'zh-CN':
+            return "Simplified Chinese";
         case 'zh-TW':
-            return "Chinese";
+            return "Taiwanese Chinese";
         case 'co':
             return "Corsican";
         case 'hr':
@@ -150,7 +151,6 @@ function longLangName (code) {
             return "Polish";
         case 'pt-PT':
         case 'pt':
-        case 'pt-BR':
             return "Portuguese";
         case 'pa':
             return "Punjabi";
@@ -223,8 +223,43 @@ function longLangName (code) {
         case 'zu':
             return "Zulu";
         default :
-            return "";
+            return "Unknown";
     };
 };
 
-module.exports = longLangName;
+// returns langList modified
+// according to source language
+function makeLangList (code, list) {
+    if(!list.includes(code)) {
+        console.log("Does not exist");
+        return list;
+    }
+    else {
+        let index = list.indexOf(code);
+        console.log("the index is ", index);
+
+        // if code is first in the list
+        if (index === 0) {
+            console.log("first");
+            // move it to the end
+            list.shift();
+            list.push(code);
+            return list;
+        }
+        
+        // if code is last in the list
+        if (index === list.length - 1) {
+            console.log("last");
+            return list;
+        }
+
+        // otherwise move it to the end
+        let front = list.slice(0, index);
+        let rear = list.slice(index+1);
+        list = front.concat(rear)
+        list.push(code);
+        return list;
+    }
+}
+
+module.exports = {longLangName, makeLangList};

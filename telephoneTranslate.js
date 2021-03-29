@@ -3,14 +3,14 @@
 require('dotenv').config();
 const axios = require('axios').default;
 const fs = require('fs');
-const longLangName = require('./langList');
+const {longLangName, makeLangList} = require('./langList');
 const API_KEY = process.env.API_KEY;
-const textSource = 'testFile2.txt';
-const textDestination = 'textTrans2.txt';
+const textSource = 'testFile1.txt';
+const textDestination = 'textTrans1.txt';
 const sourceLanguage = 'en';
 
 // starts and ends on English by default
-const langList = [  
+const masterLangList = [  
     'af',
     'sq',
     'am',
@@ -33,6 +33,7 @@ const langList = [
     'da',
     'nl',
     'eo',
+    'en',
     'et',
     'fi',
     'fr',
@@ -119,9 +120,10 @@ const langList = [
     'xh',
     'yi',
     'yo',
-    'zu',
-    'en'
+    'zu'
 ];
+
+const langList = makeLangList(sourceLanguage, masterLangList);
 
 // this will be replaced by dynamic input
 let inputFile = fs.readFileSync(textSource, "utf8").trim();
@@ -189,8 +191,7 @@ async function millWrapper ( langList, inputFile ) {
 }
 
 
-millWrapper(langList, inputFile);
-console.log(longLangName(sourceLanguage));
+ millWrapper(langList, inputFile);
 
-// add function to configure langList based upon the original source language
+
 // create translation object {string "itSays" , string "whichMeans", string "source", string "target"}
