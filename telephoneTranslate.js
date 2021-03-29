@@ -4,8 +4,9 @@ require('dotenv').config();
 const axios = require('axios').default;
 const fs = require('fs');
 const API_KEY = process.env.API_KEY;
-const textSource = 'testFile4.txt';
-const textDestination = 'textTrans4.txt';
+const textSource = 'testFile3.txt';
+const textDestination = 'textTrans3.txt';
+const sourceLanguage = 'en';
 
 // starts and ends on English by default
 const langList = [
@@ -70,7 +71,7 @@ const langList = [
 
 // this will be replaced by dynamic input
 let inputFile = fs.readFileSync(textSource, "utf8").trim();
-let data = `Source: en ${inputFile}`;
+let data = `Source: ${sourceLanguage} ${inputFile}`;
 
 fs.writeFile(`./outputs/${textDestination}`, data, (err) => {
     if (err) throw err;
@@ -93,7 +94,7 @@ function runTheMill(source, target, text) {
         if(res) {
             const text = res.data.data.translations[0].translatedText;
             console.log("this is the text:   ",res.data.data.translations);
-            let lineItem = `\nLanguage: ${target}, Text: ${text}`;
+            let lineItem = `\nIn ${target}, it says, ${text}`;
             fs.appendFile(`./outputs/${textDestination}`, lineItem, (err) => {
                 if (err) throw err;
             });
@@ -134,3 +135,8 @@ async function millWrapper ( langList, inputFile ) {
 
 
 millWrapper(langList, inputFile);
+
+
+// add function to configure langList based upon the original source language
+// create translation object {string "itSays" , string "whichMeans", string "source", string "target"}
+// create a function which receives lang code and returns full language name
