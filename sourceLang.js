@@ -116,10 +116,7 @@ const masterLangList = [
 $(document).ready(function () {
     var select = document.createElement("select");
     var prefLang = navigator.language;
-<<<<<<< HEAD
 
-=======
->>>>>>> detectNative
     select.name = "langSelect";
     select.id = "langSelect";
 
