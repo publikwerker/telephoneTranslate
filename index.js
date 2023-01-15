@@ -22,5 +22,5 @@ document.getElementById("phrase").addEventListener("keypress", function(event) {
 });
 document.getElementById("translateBtn").addEventListener("click", runTranslate);
 
-// need to build the select object so it pre selects the browser language
+// need to send language and phrase to telephoneTranslate.js
 // 

@@ -149,7 +149,7 @@ function runTheMill(source, target, text) {
     .then(res => {
         if(res) {
             const text = res.data.data.translations[0].translatedText;
-            console.log("this is the text:   ",res.data.data.translations);
+            //console.log("this is the text:   ",res.data.data.translations);
             let lang = longLangName(target);
             let lineItem = `\nIn ${lang}, it says, ${text}`;
             fs.appendFile(`./outputs/${textDestination}`, lineItem, (err) => {
@@ -158,7 +158,7 @@ function runTheMill(source, target, text) {
             return text;
         }
     })
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 }
 
 // this powers the runTheMill function
@@ -180,7 +180,7 @@ async function millWrapper ( langList, inputFile ) {
                 return res;
             });
         } catch (err) {
-            console.log(err);
+            console.error(err);
         }
 
         ++i;
