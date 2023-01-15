@@ -5,8 +5,8 @@ const axios = require('axios').default;
 const fs = require('fs');
 const {longLangName, makeLangList} = require('./langList');
 const API_KEY = process.env.API_KEY;
-const textSource = 'testFile1.txt';
-const textDestination = 'textTrans1.txt';
+const textSource = 'testFile7.txt';
+const textDestination = 'textTrans7.txt';
 const sourceLanguage = 'en';
 
 // starts and ends on English by default
