@@ -3,3 +3,4 @@ node_modules
 package-lock.json
 .env
 telephoneTranslate-b6cc9ce6242e.json
+.vs/
