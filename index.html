@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta 
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-        <meta name="theme-color" content="#121212" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#121212" />
 
-        <title>Telephone Translate</title>
-    </head>
+    <title>Telephone Translate</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
     <body>
         <header>
             <h1>Telephone Translate</h1>
             <h2>The familiar game with an added twist.</h2>
         </header>
         <main>
-            <form>
-                <label for="sourceLang">Source Language</label>
-                <select id="sourceLang">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                </select>
+            <form id="form">
                 <label for="phrase">Type your phrase here.</label>
                 <input id="phrase" type="text" placeholder="The rain in Spain falls mainly on the plain">
                 <button type="button" id="translateBtn">Start!</button>
@@ -31,5 +23,6 @@
             <div id="result"></div>
         </main>
         <script src="index.js"></script>
+        <script src="sourceLang.js"></script>
     </body>
 </html>
