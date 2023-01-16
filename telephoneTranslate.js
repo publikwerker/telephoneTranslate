@@ -5,8 +5,8 @@ const axios = require('axios').default;
 const fs = require('fs');
 const {longLangName, makeLangList} = require('./langList');
 const API_KEY = process.env.API_KEY;
-const textSource = 'testFile7.txt';
-const textDestination = 'textTrans7.txt';
+const textSource = 'testFile8.txt';
+const textDestination = 'textTrans9.txt';
 const sourceLanguage = 'en';
 
 // starts and ends on English by default
@@ -195,3 +195,5 @@ async function millWrapper ( langList, inputFile ) {
 
 
 // create translation object {string "itSays" , string "whichMeans", string "source", string "target"}
+// save past translations
+// module that opens with the line-by-line details
