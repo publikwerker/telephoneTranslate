@@ -1,15 +1,11 @@
 'use strict';
 
-require('dotenv').config();
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 3000;
-const API_KEY = process.env.API_KEY;
+const http = require('http')
+const fs = require('fs')
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'content-type': 'text/html' })
+    fs.createReadStream('index.html').pipe(res)
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+server.listen(process.env.PORT || 3000)

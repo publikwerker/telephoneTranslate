@@ -6,7 +6,7 @@ const fs = require('fs');
 const {longLangName, makeLangList} = require('./langList');
 const API_KEY = process.env.API_KEY;
 const textSource = 'testFile8.txt';
-const textDestination = 'textTrans9.txt';
+const textDestination = 'textTrans8.txt';
 const sourceLanguage = 'en';
 
 // starts and ends on English by default
@@ -162,7 +162,7 @@ function runTheMill(source, target, text) {
 }
 
 // this powers the runTheMill function
-async function millWrapper ( langList, inputFile ) {
+default export async function millWrapper ( langList, inputFile ) {
 
     const len = langList.length - 1;
     let outputFile = inputFile;
@@ -187,6 +187,8 @@ async function millWrapper ( langList, inputFile ) {
     }
 
     console.log("This is final result:   ", decodeURI(outputFile));
+
+   // let logFile = fs.readFileSync(textDestination, "utf8").trim();
     return decodeURI(outputFile);
 }
 
@@ -197,3 +199,4 @@ async function millWrapper ( langList, inputFile ) {
 // create translation object {string "itSays" , string "whichMeans", string "source", string "target"}
 // save past translations
 // module that opens with the line-by-line details
+// randomize language order each time
