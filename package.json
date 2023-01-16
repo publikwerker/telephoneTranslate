@@ -2,9 +2,12 @@
   "name": "telephonetranslate",
   "version": "1.0.0",
   "description": "a telephone game using the google translate url",
-  "main": "telephoneTranslate.js",
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "test": "test"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
   },
   "repository": {
     "type": "git",
@@ -24,8 +27,16 @@
     "@google-cloud/translate": "^6.1.0",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
+    "expo": "^47.0.13",
+    "expo-status-bar": "^1.4.2",
     "express": "^4.17.1",
     "google-translate-api": "^2.3.0",
-    "google-translate-token": "^1.0.0"
-  }
+    "google-translate-token": "^1.0.0",
+    "react": "^18.1.0",
+    "react-native": "^0.70.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9"
+  },
+  "private": true
 }

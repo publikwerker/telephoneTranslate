@@ -1,5 +1,18 @@
+node_modules/
+.expo/
+dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# macOS
+.DS_Store
 outputs
-node_modules
 package-lock.json
 .env
 telephoneTranslate-b6cc9ce6242e.json
